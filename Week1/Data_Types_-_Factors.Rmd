@@ -1,0 +1,44 @@
+---
+title: "Data Types - Factors"
+author: "Gareth R. White"
+date: "13 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Types - Factors
+
+## Factors
+Used to represent categorical data.
+Like an integer vector where each integer has a label.
+
+- Ordered (e.g., something ranked, assistant, associate, full professor.)
+- Unordered (e.g., male, female)
+
+Factors are treated specially by modelling functions like lm() and glm()
+Using factors with labels is better than using integers.
+Factors (labels) are "self-describing".
+e.g., "Male" and "Female" are clearer than 1 and 2.
+
+## Factors
+
+```{r}
+x <- factor(c("yes", yes", "no", "yes", "no")) # Levels are "yes" and "no"
+x
+table(x) # Frequency count of each level (e.g., 2 no, and 3 yes)
+unclass(x) # Strips class, brings it down to an integer vectos with values 2 2 1 2 1 (where yes is coded as 2 and no is coded as 1) and attribute called levels being "no" and "yes"
+```
+
+## Factors
+Order of levels can be set by the levels argument to the factor() function.
+Baseline level is the first factor.
+First factor defaults to first in alphabetic order.
+
+```{r}
+x <- factor(c("yes", "yes", "no", "yes", "no"),
+      levels = c("yes", "no"))
+x
+```

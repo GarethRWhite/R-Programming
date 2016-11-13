@@ -1,0 +1,92 @@
+---
+title: "Data_Types_-_Vectors_and_Lists"
+author: "Gareth R. White"
+date: "13 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Types - Vectors and Lists 
+https://www.coursera.org/learn/r-programming/lecture/wkAHm/data-types-vectors-and-lists
+
+c() function means 'concatenate'
+Can create vectors of objects.
+
+```{r}
+x <- c(0.5, 0.6) ## numeric
+x <- c(TRUE, FALSE) ## logical
+x <- c(T,F) ## logical
+x <- c("a", "b", "c") ## character
+x <- 9:29 ## integer
+x <- c(1+0i, 2+4i) ## complex, where the i part represents the imaginary part of the number
+```
+
+Or use the vector() function.
+Numeric vectors default to being initialised to 0.
+
+```{r}
+x <- vector("numeric", length=10)
+x
+```
+
+## Mixing Objects
+R will coerce to the least common denominator.
+
+y <- c(1.7, "a") ## character. 1.7 is coerced to "1.7"
+y <- c(TRUE, 2) ## numeric. True is coerced to 1.
+y <- c("a", TRUE) ## character. TRUE is coerced to "TRUE"
+
+## Explicit Coercion
+
+Use as.* functions
+
+```{r}
+x <- 0:6
+class (x) ## integer
+as.numeric(x)
+as.logical(x)
+as.character(x)
+as.complex(x)
+```
+
+## Explicit Coercion
+
+Nonsense coercions result as NA.
+
+```{r}
+x <- c("a", "b", "c")
+as.numeric(x)
+as.logical(x)
+as.complex(x) #0+0i 1+01 2+0i 3+0i 4+0i 5+0i 6+0i ## [GARETH] It actually just produces [1] NA NA NA. Perhaps the slide author made a mistake?
+```
+
+## Lists
+Can contain elements of different class.
+```{r}
+x <- list(1, "a", TRUE, 1 + 4i)
+x
+```
+
+Elements of a list have double brackets around them.
+Other vectors have single brackets.
+
+
+[[1]]
+[1] 1
+First element is a vector with value 1
+
+[[2]]
+[1] "a"
+Second element is a vector with value "a"
+
+
+[[3]]
+[1] TRUE
+Third element is a vector TRUE
+
+[[4]]
+[1] 1+4i
+Fourth element is a complex number.

@@ -1,0 +1,34 @@
+---
+title: "Data Types - Missing Values"
+author: "Gareth R. White"
+date: "13 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Types - Missing Values
+
+## Missing Values
+Denoted by NA or NaN
+is.na() is used for mathematical operations
+is.nan() is used for everything else.
+
+NA values have a class.
+There are Integer NA (missing Integer values), character NA (missing character values), etc.
+
+NaN value is also NA
+But NA is not necessarily a NaN
+
+## Missing Values
+
+```{r}
+x <- c(1, 2, NA, 10, 3)
+is.na(x)
+is.nan(x)
+x <- c(1, 2, NaN, NA, 4)
+is.nan(x)
+```
+

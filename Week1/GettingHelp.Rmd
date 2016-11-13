@@ -1,0 +1,58 @@
+---
+title: "GettingHelp"
+author: "Gareth R. White"
+date: "13 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Finding Answers
+Finding Answers.
+Search archives.
+Search web.
+Read manual.
+Read FAQ.
+Inspection / experimentation.
+Asking a skilled friend.
+Review source code.
+
+# Asking Questions
+Before asking questions, let others know you've done the earlier steps.
+
+```{r}
+library(datasets)
+data(airquality)
+cor(airquality)
+```
+
+https://www.google.com.hk/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=missing%20observations%20in%20cov%2Fcor
+
+## Asking Questions
+What steps will reproduce the problem?
+What is the expected output?
+What do you see instead?
+What versions are you using (R, packages, OS)
+
+## Subject Headers
+"R 3.0.2 lm() function on Mac OS X 10.9.1 -- seg fault on large data frame""
+
+## Do
+Describe the goal, not the step.
+Be explicit about the question.
+Provide the minimum information necessary.
+Be courteous.
+Follow up with the solution.
+
+## Don't
+Claim you've found a bug.
+Grovel as a substitute for doing your homework.
+Post homework questions in public.
+Email multiple mailing lists at once.
+
+## Places t oturn
+Class discussion board
+r-help@r-project.org
+

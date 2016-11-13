@@ -1,0 +1,52 @@
+---
+title: "Data_Types_-_R_Objects_and_Attributes"
+author: "Gareth R. White"
+date: "13 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Types - R Objects and Attributes
+
+## Objects
+Atomic classes:
+1 Character
+2 Numeric (real numbers)
+3 Integer
+4 Complex
+5 Logical (True/False)
+
+The most basic object is a vector.
+Can only contain objects of the same class.
+
+BUT: a list is represented as a vector but can contain objects of different classes.
+
+Create empty vector:
+vector()
+
+## Numbers
+Normally they are numeric objects (double precision, real numbers)
+
+Explicitly require integer: L suffix
+e.g., 1 is numeric, 1L is integer.
+
+Inf represents infinity.
+e.g., 1/0 is Inf.
+1 / Inf is 0.
+
+NaN represents undefined ('not a number')
+e.g., 0/0 is NaN.
+NaN can also represent missing values.
+
+## Attributes
+
+- names, dimnames
+- dimensions (e.g., matrices, arrays)
+- class (e.g., numeric, integer)
+- length (for a vector, this is the number of items in the vector)
+- other user defined attributes / metadata
+
+Access attributes by attributes() function

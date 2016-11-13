@@ -1,0 +1,12 @@
+---
+title: "Data Types - Data Frames"
+author: "Gareth R. White"
+date: "13 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Types - Data Frames

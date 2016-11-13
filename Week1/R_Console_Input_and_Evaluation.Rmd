@@ -1,0 +1,46 @@
+---
+title: "R_Console_Input_and_Evaluation"
+author: "Gareth R. White"
+date: "13 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Entering Input
+
+```{r}
+x <- 1
+print(x)
+```
+
+<- is the assignement operator
+x is a symbol, a numeric object with 1 element, a Vector.
+print is a function.
+
+# Evaluation
+
+
+```{r}
+x <- 5 ## nothing printed
+```
+
+```{r}
+x ## auto-printing occurs
+```
+The [1] indicates that x is a vector and 5 is the first element.
+
+```{r}
+print(x) ## explicit printing
+```
+
+
+# Printing
+
+```{r}
+x <- 1:20
+x
+```
+Colon operator creates a sequence.
