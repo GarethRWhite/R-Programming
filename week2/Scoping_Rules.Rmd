@@ -1,0 +1,58 @@
+---
+title: "Scoping Rules - Symbol Binding"
+author: "Gareth R. White"
+date: "16 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Scoping Rules - Symbol Binding
+
+## A Diversion on Binding Values to Symbol
+Search through a series of _environments_
+
+At command line:
+- Global environment for a symbol matching the one requested
+- Namespaces of each package in the search list.
+
+Search lists are shown using _search()_
+This is an ordered list.
+".GlobalEnv" is always first.
+
+## Binding Values to Symbol
+Global environment is always first.
+Base package is always last.
+The order matters.
+Users can configure which get loaded at startup.
+When using _library()_, the namespace gets put in position 2 (by default).
+R has separate namespaces for functions and non-functions. It's possible to have an object named _c_ and a function named _c()_
+
+## Scoping Rules
+R uses _lexical scoping_ (aka _static scoping_). A common alternative is dynamic scoping.
+
+## Lexical Scoping
+
+```{r}
+f <- function(x, y)
+{
+  x^2 + y / z
+}
+```
+
+z is a _free variable_ not deined in the function header.
+
+## Lexical Scoping
+"the values of free variables are searched for in the environment in which the function was defined"
+
+An _environment_ is a collection of (symbol, value) pairs.
+Every environment has a parent environment, and can have multiple children.
+The _empty_ environment has no parent.
+A function + environment is a _closure_ or _function closure_
+
+## Lexical Scoping
+If the value of a symbol is not found in the environment in which a function was defined, then the search is continued in the parent environment.
+Search continues up through the parent envrionments until we hit the _top-level_ environment (e.g., the global environment - the workspace - or the namespace of the package.
+After the top-level environment, search continues until we hit the _empty_ environment.

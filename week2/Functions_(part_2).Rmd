@@ -1,0 +1,77 @@
+---
+title: "Functions (part 2)"
+author: "Gareth R. White"
+date: "16 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Functions (part 2)
+https://www.coursera.org/learn/r-programming/lecture/2xbdl/functions-part-2
+
+## Defining a Function
+
+```{r}
+f <- function(a, b=1, c=2, d=NULL)
+{
+}
+```
+
+NULL usually means there's nothing there
+
+## Lazy Evaluation
+
+```{r}
+f <- function(a, b)
+{
+  a^2
+}
+f(2)
+```
+
+b is never used.
+Arguments to functions are only evaluated as needed.
+Calling f(2) without a second parameter is ok.
+
+
+## Lazy Evaluation
+
+```{r}
+f <- function(a, b)
+{
+  print(a)
+  print(b)
+}
+f(45) ## Error: argument 'b' is missing, with no default
+```
+
+## The '...' Argument
+
+Variable number of arguments.
+often used when extending another function
+
+```{r}
+myplot <- function(x, y, type="1", ...)
+{
+  plot(x, y, type=type, ...)
+}
+```
+
+"Generic functions" can pass extra arguments to methods.
+Dispatch methods for different types of data.
+
+## The '...' Argument
+Also necessary when the number of arguments cnanot be known in advance.
+e.g., ... is the first argument in some cases,
+args(paste)
+args(cat)
+
+## Arguments Coming After the '...' Argument
+Must be named.
+Cannot be partially matched.
+
+paste("a", "b", sep=":") ## Ok
+paste("a", "b", se=":") ## Partial matching of "se" for "sep" does not work.

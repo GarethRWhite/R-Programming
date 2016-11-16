@@ -1,0 +1,51 @@
+---
+title: "Control Structures - Your First R Function"
+author: "Gareth R. White"
+date: "15 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Control Structures - Your First R Function
+
+```{r}
+add2 <- function(x,y)
+{
+  x+y
+}
+```
+
+Function directive returns the last expression.
+```{r}
+above10 <- function(x)
+{
+  use <- x > 10 ## Logical vector
+  x[use] ## subset of vector x whose elements are bigger than 10
+}
+```
+
+```{r}
+above <- function(x, n = 10) ## provide a default for n
+{
+  use <- x > n
+  x[use]
+}
+```
+
+```{r}
+columnmean <- function(y, removeNA = TRUE) ## data frame or matrix
+{
+  nc <- ncol(y)
+  means <- numeric(nc) # empty vector
+  for(i in 1:nc)
+  {
+    means[i] <- mean(y[, i], na.rm = removeNA)
+  }
+  means
+}
+
+columnmean(airquality)
+```
