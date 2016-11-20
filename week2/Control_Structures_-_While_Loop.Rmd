@@ -1,0 +1,28 @@
+---
+title: "Control Structures - While Loop"
+author: "Gareth R. White"
+date: "15 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Control Structures - While Loop
+
+```{r}
+count <- 0
+while(count<10) {
+  print(count)
+  count <-count + 1
+}
+```
+
+Can have multiple conditions
+```{r}
+while(z>= 3 && z<=10)
+{
+  
+}
+```

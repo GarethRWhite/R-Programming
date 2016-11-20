@@ -1,0 +1,56 @@
+---
+title: "Control Structures - Repeat, Next, Break"
+author: "Gareth R. White"
+date: "15 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Control Structures - Repeat, Next, Break
+
+## Repeat
+Infinite loop.
+Only way to exit is break.
+
+x <- 1
+tol <- 1e-8
+
+repeat
+{
+  x1 <- computeEstimate()
+  
+  if(abs(x1 - x0) < tol)
+  {
+    break
+  }
+  else
+  {
+    x0 <- x1
+  }
+}
+
+Could run forever.
+Better to set fixed limit (e.g., with for loop), then report whether convergence was achieved or not.
+
+
+## Next, return
+Next skips an iteration of a loop.
+
+```{r}
+for(i in 1:100) {
+  if(i <= 20)
+  {
+    ## Skip the first 20 iterations
+    next
+  }
+  ## Do something here
+}
+```
+
+return signals that a function should exit and return a value.
+
+## Control Structures
+Use the *apply functions for interactive work instead.

@@ -1,0 +1,12 @@
+---
+title: "Scoping Rules - Opimization Example (OPTIONAL)"
+author: "Gareth R. White"
+date: "16 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Scoping Rules - Opimization Example (OPTIONAL)

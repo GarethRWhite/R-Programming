@@ -1,0 +1,98 @@
+---
+title: "Scoping Rules - R Scoping Rules"
+author: "Gareth R. White"
+date: "16 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Scoping Rules - R Scoping Rules
+https://www.coursera.org/learn/r-programming/lecture/FkTgn/scoping-rules-r-scoping-rules
+
+## Lexical Scoping
+A function is typically defined in the global environment. Free variables are found in the user's workspace.
+This is logical and usually the right thing to do.
+However, in R you can define a function inside another function.
+
+```{r}
+make.power <- function(n)
+{
+  pow <- function(x)
+  {
+    x^n
+  }
+  pow
+}
+```
+
+```{r}
+cube <- make.power(3)
+square <- make.power(2)
+cube(3)
+square(3)
+```
+
+## Exploring a Function Closure
+
+```{r}
+ls(environment(cube))
+get("n", environment(cube))
+
+ls(environment(square))
+get("n", environment(square))
+```
+
+## Lexical vs Dynamic Scoping
+```{r}
+y <- 10
+f <- function(x)
+{
+  y <- 2 ## free
+  y^2 + g(x) ## free
+}
+
+g <- function(x)
+{
+  x*y ## y is free
+}
+
+f(3) ## g uses y == 10
+
+## Lexical Vs. Dynamic Scoping
+With lexical scoping, the value y in function g is looked up in the environment in which the function was defined (which here is the global environment).
+The value of y is 10.
+
+With dynamic scoping, the value of y is looked for in the environment in which the function was called (the _calling environment_).
+In R the calling environment is also known as the _parent frame_.
+So the value would be 2.
+
+## Lexical Vs. Dyanamic Scoping
+When a function is defined in the global environmetn, and subsequently called from the global environment, then they are the same.
+This looks like dynamic scoping (but is not).
+
+g <- function (x)
+{
+  a <- 3
+  x+a+y
+}
+
+g(2) ## Error, 'y' not found
+y <- 3
+g(2) ## ok
+
+
+## Other Languages
+Other languages support lexical scoping:
+- Scheme
+- Perl
+- Python
+- Common Lisp
+
+## Consequence of Lexical Scoping
+All objects must be stored in memory.
+All functions must carry a poniter to their respective defining environments.
+In S-PLUS, free variables were always looked up in the global workspace, so everything can be stored on disk. The defining environment of all functions was the same.
+

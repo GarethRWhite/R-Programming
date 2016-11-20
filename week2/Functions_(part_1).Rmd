@@ -1,0 +1,54 @@
+---
+title: "Functions (part 1)"
+author: "Gareth R. White"
+date: "15 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Functions (part 1)
+
+## Functions
+Created using the 'function' directive.
+Functions are stored as R objects, with class 'function'.
+First class objects.
+Can be passed as arguments to other functions.
+Can be nested. Return value is last expression to be evaluated.
+
+## Function arguments
+Named arguments can have default values.
+Formal arguments are the arguments included in the function definition.
+The 'formals' function returns a list of all the formal arguments of a function.
+Not every function call in R makes use of all the formal arguments.
+
+## Argument Matching
+Can be matched by position or name.
+
+## Argument Matching
+You can mix position and name matching.
+Named arguments are matched first.
+After matching a name, the rest of the arguments are assigned in order, starting from the first non-named argument.
+
+args(lm)
+function (formula, data, subset, weights, na.action,
+          method = "qr", model = TRUE, x = FALSE,
+          y = FALSE, qr = TRUE, singular.ok = TRUE,
+          contrasts = NULL, offset, ...)
+
+The following are equivalent:
+```{r}
+lm(data = mydata, y ~ x, model = FALSE, 1:100) ## formula is the first non-named argument
+lm(y ~ x, mydata, 1:100, model = FALSE) ## forumal is the first non-named argument
+```
+
+## Argument Matching
+Useful where argument lists are very long.
+
+## Argument Matching
+Can be partially matched, for interactive work.
+1 Check for exact match.
+2 Check for partial match.
+3 Check for position match.
