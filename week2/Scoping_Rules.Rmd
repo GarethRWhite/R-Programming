@@ -45,7 +45,7 @@ f <- function(x, y)
 z is a _free variable_ not deined in the function header.
 
 ## Lexical Scoping
-"the values of free variables are searched for in the environment in which the function was defined"
+"the values of free variables are searched for in the environment in which the function was _defined_"
 
 An _environment_ is a collection of (symbol, value) pairs.
 Every environment has a parent environment, and can have multiple children.

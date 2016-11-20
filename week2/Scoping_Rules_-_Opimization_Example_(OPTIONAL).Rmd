@@ -48,7 +48,7 @@ Optimization functions in R _minimize_ functions, so you need to use the negativ
 ## Maximizing a Normal Likelihood
 
 ```{r}
-set.seed(1); normals <- rnorm(100, 1, 2)
+set.seed(1); normals <- rnorm(100, 1, 2) ## 100 observations, mean=1, sd=2
 nLL <- make.NegLogLik(normals)
 nLL
 ls(environment(nLL))
@@ -73,12 +73,18 @@ optimize(nLL, c(1e-6, 10))$minimum
 
 ```{r}
 nLL <- make.NegLogLik(normals, c(1, FALSE))
-x <- seq(1.7, 1.9, len=100)
-y <- sapply(x, nLL)
-plot(x, exp(-(y - min(y))), type = "1")
+x <- seq(1.7, 1.9, len=100) ## Create a sequence of values for the X-coorinate
+y <- sapply(x, nLL) ## Apply the nLL function to the X coordinates, to produce the corresponding y coordinates.
+plot(x, exp(-(y - min(y))), type = "l")
 
 nLL <- make.NegLogLik(normals, c(FALSE, 2))
 x <- seq(0.5, 1.5, len = 100)
 y <- sapply(x, nLL)
-plot(x, exp(-(y - min(y))), type = "1")
+plot(x, exp(-(y - min(y))), type = "l")
 ```
+
+## Lexical Scoping Summary
+Objective functions can be 'built' which contain all of the necessary data for evaluating the function.
+No need to carry around long argument lists.
+
+Robert Gentleman and Ross Ihaka (2000), "Lexical Scope and Statistical Computing", JCGS, 9, 491-508.

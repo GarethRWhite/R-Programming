@@ -1,0 +1,12 @@
+---
+title: "Practical R Exercises in swirl Part 2"
+author: "Gareth R. White"
+date: "20 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Practical R Exercises in swirl Part 2

@@ -60,6 +60,7 @@ g <- function(x)
 }
 
 f(3) ## g uses y == 10
+```
 
 ## Lexical Vs. Dynamic Scoping
 With lexical scoping, the value y in function g is looked up in the environment in which the function was defined (which here is the global environment).
@@ -73,6 +74,7 @@ So the value would be 2.
 When a function is defined in the global environmetn, and subsequently called from the global environment, then they are the same.
 This looks like dynamic scoping (but is not).
 
+```{r}
 g <- function (x)
 {
   a <- 3
@@ -82,6 +84,7 @@ g <- function (x)
 g(2) ## Error, 'y' not found
 y <- 3
 g(2) ## ok
+```
 
 
 ## Other Languages

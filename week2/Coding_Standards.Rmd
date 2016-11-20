@@ -1,0 +1,18 @@
+---
+title: "Coding Standards"
+author: "Gareth R. White"
+date: "20 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Coding Standards
+https://www.coursera.org/learn/r-programming/lecture/k159q/coding-standards
+
+1. Always use text files / text editor.
+2. Indent your code.
+3. Limit the width of your code (80 columns?). Suggest: indent of 4 minimum, 8 ideal.
+4. Limit the length of your function.

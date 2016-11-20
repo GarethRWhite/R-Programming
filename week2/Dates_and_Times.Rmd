@@ -1,0 +1,105 @@
+---
+title: "Dates and Times"
+author: "Gareth R. White"
+date: "20 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Dates and Times
+https://www.coursera.org/learn/r-programming/lecture/yl7BO/dates-and-times
+
+Date: Date class.
+Stored internally as days since 1970.01.01
+
+Time: POSIXct and POSIXlt classes.
+Stored internally as seconds since 1970.01.01
+
+## Dates in R
+
+```{r}
+x <- as.Date("1970-01-01")
+x ## Automatically converted to text
+unclass(x) ## 0
+unclass(as.Date("1970-01-02")) ## 1
+```
+
+## Time in R
+POSIXct
+Very large integer.
+Useful for storing time in data frames.
+
+POSIXlt
+List, plus other useful information like day of the week, year, month, etc.
+
+Generic functions for objects of class Date, POSIXct, or POSIXlt:
+weekdays() - gives day of the week
+months() - gives month name
+quarters() - gives quarter number
+
+```{r}
+x <- Sys.time()
+x
+p <- as.POSIXlt(x)
+names(unclass(p))
+p$sec
+```
+
+
+## Times in R
+
+```{r}
+x <- Sys.tim()
+x
+unclass(x)
+x$sec ## Error
+p <- as.POSIXlt(x)
+p$sec
+```
+
+## Times in R
+strptime()
+Converts text string date/time
+
+```{r}
+datestring <- c("January 10, 2012 10:40", "December 9, 2011 9:10")
+x <- strptime(datestring, "%B %d, %Y %H:%M")
+x
+class(x) ## POSIXlt
+```
+
+## Operations on Dates and Times
+```{r}
+x <- as.Date("2012-01-01") ## class Date
+y <- strptime("9 Jan 2011 11:34:21", "%d %b %Y %H:%M:%S") ## class POSIXlt
+x - y ## Error, can't mix different classes
+x <- as.POSIXlt(x)
+x - y
+```
+
+
+## Operations on Dates and Times
+Keep track of leap years, seconds, daylight savings, timezones.
+
+```{r}
+x <- as.Date("2012-03-01")
+y <- as.Date("2012-02-28")
+x - y # 2 days, because 2012 was a leap year.
+
+x <- as.POSIXct("2012-10-25 01:00:00")
+y <- as.POSIXct("2012-10-25 06:00:00", tz = "GMT")
+y - x
+```
+
+## Summary
+
+- Dates and times have special classes.
+- Allow numerical and statistical calculations.
+- Dates use _Date_ class.
+- Times use _POSIXct_ and _POSIXlt_ classes.
+- Character strings can be coerced to Date/time classes using strptime(), as.Date(), as.POSIXct(), or as.POSIXlt()
+
+Plotting functions recognise date/time objects, and format appropriately.

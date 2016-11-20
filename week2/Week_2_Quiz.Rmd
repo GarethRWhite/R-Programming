@@ -1,0 +1,19 @@
+---
+title: "Week 2 Quiz"
+author: "Gareth R. White"
+date: "20 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Week 2 Quiz
+https://www.coursera.org/learn/r-programming/exam/R8pfM/week-2-quiz
+
+z=10
+x=3
+g(y) = y+10
+z=4
+3 + 3+10
