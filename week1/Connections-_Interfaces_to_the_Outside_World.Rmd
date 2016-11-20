@@ -1,0 +1,60 @@
+---
+title: 'Connections: Interfaces to the Outside World'
+author: "Gareth R. White"
+date: "13/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Connections: Interfaces to the Outside World
+https://www.coursera.org/learn/r-programming/lecture/pSHGL/connections-interfaces-to-the-outside-world
+
+## Interfaces to the Outside World
+Data are read using _connection_ interfaces
+
+- file
+- gzfile
+- bzfile
+- url
+
+## File Connections
+
+```{r}
+str(file)
+```
+
+- description: name of the file
+- open: code indicating "r" read only, "w" writing (and initializing new file), "a" appending, "rb" / "wb", "ab" for binary mode (Windows)
+
+## Connections
+
+```{r}
+con <- file("foo.txt", "r")
+data <- read.csv(con)
+close(con)
+# Is all the same as
+data <- read.csv("foo.txt")
+```
+
+
+## Reading Lines of a Text File
+```{r}
+con <- gzfile("words.gz")
+x <- readLines(con, 10)
+x
+```
+
+writeLines takes a character vector, and writes each element one line at at time to a text file.
+
+## Reading Lines of a Text File
+Could use for reading webpages.
+
+```{r}
+con <- url("http://jhsph.edu", "r")
+x <- readLines(con)
+head(x)
+```
+

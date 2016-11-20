@@ -1,0 +1,34 @@
+---
+title: "Vectorized Operations"
+author: "Gareth R. White"
+date: "14/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Vectorized Operations
+https://www.coursera.org/learn/r-programming/lecture/nobfZ/vectorized-operations
+
+
+
+```{r}
+x <- 1:4; y <- 6:9
+x + y
+x > 2 # Gives a logical vector
+y == 8
+x * y
+x / y
+```
+
+## Vectorized Matirx Operations
+
+```{r}
+x <- matrix(1:4, 2, 2); y <- matrix(rep(10,4), 2, 2)
+x * y # Element-wise multiplication
+x / y
+x %*% y # True matrix multiplication
+```
+

@@ -1,0 +1,24 @@
+---
+title: "Subsetting - Partial Matching"
+author: "Gareth R. White"
+date: "14/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Subsetting - Partial Matching
+https://www.coursera.org/learn/r-programming/lecture/e284V/subsetting-partial-matching
+
+## Partial Matching
+Like partial completion for names.
+
+```{r}
+x <- list(aardvark=1:5)
+x$a
+x[["a"]] # Double bracket does not do partial matching by default
+x[["a", exact=FALSE]]
+```
+

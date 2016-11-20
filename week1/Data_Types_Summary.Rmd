@@ -1,0 +1,14 @@
+# Data Types Summary
+https://www.coursera.org/learn/r-programming/lecture/9ux8k/data-types-summary
+
+-Atomic classes:
+  - numeric
+  - logical
+  - character
+  - integer
+  - complex
+-Vectors, lists
+-factors
+-missing values
+-data frames
+-names

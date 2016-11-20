@@ -1,0 +1,48 @@
+---
+title: "Subsetting - Matrics"
+author: "Gareth R. White"
+date: "14/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Subsetting - Matrics
+https://www.coursera.org/learn/r-programming/lecture/4gSc1/subsetting-matrices
+
+## Subsetting a Matrix
+
+```{r}
+x <- matrix(1:6, 2, 3)
+x[1,2]
+x[2,1]
+```
+
+Indices can be left missing
+
+```{r}
+x[1,] # First row
+x[,2] # Second column
+```
+
+## Subsetting a Matrix
+By default, when a single element of a matrix is returned, it is a vector of length 1 (not the same type as the original, which would be a 1x1 matrix).
+By default, drop = TRUE, which "drops" the dimension (i.e., instead of a 2D object, you get a 1D object).
+To return a 1x1 matrix, set drop = FALSE
+
+```{r}
+x <- matrix(1:6, 2, 3)
+x[1,2]
+x[1,2, drop=FALSE]
+```
+
+## Subsetting a Matrix
+Subsetting a single row or column will give a vector, not a matrix by default.
+
+```{r}
+x <- matrix(1:6, 2, 3)
+x[1,]
+x[1, drop=FALSE]
+```
