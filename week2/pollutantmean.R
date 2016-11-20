@@ -9,8 +9,12 @@ pollutantmean <- function(directory, pollutant, id = 1:332)
 	## Return the mean of the pollutant across all monitors listed in the 'id' vector (ignoring NA values)
 	## NOTE: Do not round the result!
 	
+	# Set the expected number of digits
+	options("digits"=4)
+	
 	cwd <- getwd()
 	setwd(directory)
+	
 	resultsDF <- data.frame()
 	for (n in id)
 	{
@@ -18,9 +22,10 @@ pollutantmean <- function(directory, pollutant, id = 1:332)
 		currentDF <- read.csv(fileName)
 		resultsDF <- rbind(resultsDF, currentDF)
 	}
+	
 	setwd(cwd)
 	
-	sprintf("%.3f", mean(subset(resultsDF)[[pollutant]], na.rm=TRUE))
+	mean(subset(resultsDF)[[pollutant]], na.rm=TRUE)
 }
 
 ## Example output
@@ -31,7 +36,3 @@ pollutantmean <- function(directory, pollutant, id = 1:332)
 ### [1] 1.706
 #pollutantmean("specdata", "nitrate", 23)
 ### [1] 1.281
-
-pollutantmean("specdata", "sulfate", 1:10)
-pollutantmean("specdata", "nitrate", 70:72)
-pollutantmean("specdata", "nitrate", 23)
