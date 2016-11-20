@@ -1,0 +1,40 @@
+---
+title: "Subsetting - Remoing Missing Values"
+author: "Gareth R. White"
+date: "14/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Subsetting - Remoing Missing Values
+https://www.coursera.org/learn/r-programming/lecture/Qy8bH/subsetting-removing-missing-values
+
+## Removing NA Values
+
+```{r}
+x <- c(1, 2, NA, 4, NA, 5)
+bad < is.na(x) # Logical vector, which is TRUE if the element is missing.
+x[!bad]
+```
+
+## Removing NA Values
+
+Multiple things, and you want the subset with no missing values.
+
+```{r}
+x <- c(1, 2, NA, 4, 5)
+y <- c("a", "b", NA, "d", NA, "f")
+good <- complete.cases(x,y) # Which are all non-missing?
+good
+x[good]
+y[good]
+```
+
+```{r}
+airquality[1:6, ]
+good <- complete.cases(airquality)
+airquality[good, ][1:6, ]
+```

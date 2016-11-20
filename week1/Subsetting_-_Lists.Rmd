@@ -1,0 +1,54 @@
+---
+title: "Subsetting - Lists"
+author: "Gareth R. White"
+date: "14/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Subsetting - Lists
+https://www.coursera.org/learn/r-programming/lecture/hVKHm/subsetting-lists
+
+x <- list(foo = 1:4, bar=0.6)
+x[1] # list, containing the name "foo" which is a sequence 1 through 4
+x[[1]] # sequence 1 through 4
+x$bar # the value 0.6
+x[["bar"]] # the value 0.6
+x["bar"] # list, with the element bar in it, which has the value 0.6
+
+
+## Subsetting Lists
+
+Extract multiple elements,
+
+```{r}
+x <- list(foo=1:4, bar=0.6, baz="hello")
+x[c(1,3)] # gives 1st, and 3rd element, i.e., foo and baz
+```
+
+## Subsetting Lists
+
+[[]] can be used with _computed_ indices.
+$ can only be used with literal names.
+
+```{r}
+x <- list (foo=1:4, bar=0.6, baz="hello")
+name <- "foo"
+x[[name]] # computed index for "foo"
+x$name # element "name" doesn't exist.
+x$foo
+```
+
+## Subsetting Nested Elements of a List
+
+[[]] can take an integer sequence
+
+```{r}
+x <- list(a = list(10,12,14), b=c(3.14, 2.81))
+x[[c(1,3)]] # Extract 3rd element of 1st element, i.e., 14.
+x[[1]][[3]] # Same as above.
+x[[c(2,1)]] # Extracts 1st element of 2nd element, i.e., 3.14
+```

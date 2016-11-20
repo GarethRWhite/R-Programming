@@ -1,0 +1,41 @@
+---
+title: "Subsetting - Basics"
+author: "Gareth R. White"
+date: "14/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Subsetting - Basics
+https://www.coursera.org/learn/r-programming/lecture/JDoLX/subsetting-basics
+
+## Subsetting
+[]
+Always retuns an object of the same class as the original.
+Can be used to return more than one element
+
+[[]]
+Extract elements from a list or data frame.
+Can only select a *single element*.
+Class is not necessarily the same as the original.
+
+$
+Extract elements by name from list or data frame.
+Similar semantics to [[]]
+
+## Subsetting
+
+```{r}
+x <- c("a", "b", "c", "c", "d", "a")
+x[1]
+x[2]
+x[1:4]
+x[x > "a"]
+u <- x > "a"
+u
+x[u]
+```
+

@@ -1,0 +1,51 @@
+---
+title: "Textual Data Formats"
+author: "Gareth R. White"
+date: "13/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Textual Data Formats
+https://www.coursera.org/learn/r-programming/lecture/qFvzp/textual-data-formats
+
+## Textual Formats
+dump()
+dput()
+Text formats.
+Editable and potentially recoverable from corruption.
+Contain metadata (type of data in each object, class of each column).
+Works well with version control systems like git.
+Corruption somewhere in the file can be found and fixed easier than binary objects.
+Not very space efficient.
+
+## dputing R objets
+Will take most R objects.
+Constructs R code to recreate the object.
+Can only be used on a single R object
+
+```{r}
+y <- data.frame(a=1, b=2)
+dput(y)
+dput(y, file="y.R")
+new.y <- dget("y.R")
+new.y
+```
+
+## Dumping R Objects
+Can take multiple objects
+Read back using source()
+Pass a character vector with the names of the objects.
+
+```{r}
+x <- "foo"
+y <- data.frame(a=1, b="a")
+dump(c("x", "y"), file="data.R")
+rm(x,y)
+source("data.R")
+y
+x
+```

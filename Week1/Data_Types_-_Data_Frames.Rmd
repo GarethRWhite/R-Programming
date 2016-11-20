@@ -10,3 +10,22 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Data Types - Data Frames
+Store tabular data
+A list, where every elemnet has the same length.
+Each element can be thought of as a column.
+The length of each element can be thought of as the number of rows.
+Like lists, data frames can store objects of different class in each column. Whereas matrices can only store objects of the same class.
+Has attribute row.names()
+Usually created with:
+read.table()
+read.csv()
+Convert to matrix with: data.matrix(), though coercion will apply.
+
+# Data frames
+```{r}
+x <- data.frame(foo=1:4, bar=c(T, T, T, F)) # Created columnwise, so foo is first column, bar is second column
+x
+nrow(x)
+ncol(x)
+```
+

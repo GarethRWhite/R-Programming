@@ -1,0 +1,61 @@
+# Reading Tabular Data
+https://www.coursera.org/learn/r-programming/lecture/bQ5B9/reading-tabular-data
+
+## Reading Data
+Read tabular data:
+read.table()
+read.csv()
+
+Read lines of text:
+readLines()
+
+Read R code files:
+source()
+
+Write R code files:
+dump()
+
+Read (deparsed) R code files:
+dget()
+
+Write (deparsed) R code files:
+dput()
+
+Read saved workspace:
+load()
+
+Read single binary R object:
+unserialize()
+
+
+## Writing Data
+write.table
+writeLines
+dump
+dput
+save
+serialize
+
+
+## Reading tables with read.table()
+Arguments:
+
+- file: name of file or connection
+- header: logical, does the file have a header line?
+- sep: string, indicates how columns are separted
+- colClasses: character vector, indicates the class of each column
+- nrows: number of rows
+- comment.char: character string, indicates the comment character
+- skip: number of lines to skip from the beginning
+- stringsAsFactors: logical (defaults to true), indicates whether character variables should be coded as factors.
+
+## read.table
+data <- read.table("foo.txt")
+
+Automatically:
+- Skip lines that start with #
+- Figure out how many rows there are (and how much memory is needed)
+- Figure out the class of variables (but telling R this can make it more efficient)
+
+read.csv() is the same as read.table(), except that header<-T, and the default sep <- "," instead of " "
+
