@@ -1,0 +1,41 @@
+---
+title: "Loop Functions - mapply"
+author: "Gareth R. White"
+date: "21 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loop Functions - mapply
+https://www.coursera.org/learn/r-programming/lecture/EBnAr/loop-functions-mapply
+
+## mapply
+Multivariate version of lapply / sapply.
+Applies a function _in parallel_ over a _set_ of arguments.
+apply only applies a function to a single argument, which is a single list, not to multiple list arguments.
+
+- FUN is the function to apply. Number of arguments has to be at least as many as the number of lists you pass to mapply.
+- ... contains arguments to apply over.
+- MoreArgs is a list of other arguments to pass to FUN.
+- SIMPLIFY indicates whether the result should be simplified.
+
+## mapply
+
+These 2 lines are equivalent:
+```{r}
+list(rep(1, 4), rep(2, 3), rep(3, 2), rep(4, 1))
+## Returns a list of 4 elements:
+	## List of 4 elements: 1111
+	## List of 3 elements: 222
+	## List of 2 elements: 33
+	## List of 1 elements: 4
+
+mapply(rep, 1:4, 4:1)
+## Invokes rep 4 times: (1,4), rep(2, 3), rep(3, 2), rep(4, 1)
+## Returns the same
+```
+
+_rep_ replicates.

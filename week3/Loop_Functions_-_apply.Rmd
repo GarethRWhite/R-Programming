@@ -1,0 +1,79 @@
+---
+title: "apply"
+author: "Gareth R. White"
+date: "21 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# apply
+https://www.coursera.org/learn/r-programming/lecture/IUUhK/loop-functions-apply\
+
+To evaluate a function over the margins of an array.
+Often uses anonymous functions.
+Most often used over the rows or columns of a matrix.
+Can be used with general arrays (e.g., average of an array of matrices).
+Generally _not_ faster than writing a loop.
+Code looks more compact (e.g., 1 line, instead of multi-line for-loop).
+
+## apply
+- x, is an array (array is vector that has dimensions).
+- MARGIN, is an integer vector, indicating which margins should be 'retained'.
+- FUN, is the function to apply.
+- ..., is other arguments passed to FUN.
+
+## apply
+
+```{r}
+x <- matrix(rnorm(200), 20, 10) # 20 rows, 10 columns, elements random
+apply(x, 2, mean)
+# MARGIN = 2 means retain the 2nd dimension (columns), and collapse the 1st (rows).
+# Returns vector of length 10:
+# The means of all 20 rows, for each of the 10 columns.
+
+apply(x, 1, sum)
+# MARGIN = 1 means retain the 1st dimension (rows), and collapse the 2nd (columns).
+# Returns vector of length 20:
+# The sum of all 10 columns, for each of the 20 rows.
+```
+
+## col / row sums and means
+Much faster shortcuts:
+
+- rowSums() = apply(x, 1, sum)
+- rowmeans() = apply(x, 1, mean)
+- colSums() = apply(x, 2, sum)
+- colMeans() = apply(x, 2, mean)
+
+## Other ways to apply
+
+Quantiles of the rows of a matrix.
+```{r}
+x <- matrix(rnorm(200), 20, 10)
+apply(x, 1, quantile, probs = c(0.25, 0.75))
+# MARGIN = 1, preserve rows.
+# probs = 25th and 75th percentile
+# For each row, calculate 2 numbers: the 25th and 75th percentile.
+# Returns 2x20 matrix, where row 1 is the 25th percentile, row 2 is the 75th percentile.
+# 20 columns, corresponding to the 20 preserved rows of x.
+```
+
+
+## apply
+Average matrix in an array
+
+```{r}
+a <- array(rnorm(2 * 2 * 10), c(2, 2, 10))
+## 3D array, with dimensions 2, 2, 10.
+## Filled with random variables
+
+apply(a, c(1, 2), mean)
+## MARGIN = 1st and 2nd dimensions (collapse 3rd)
+## Returns a matrix with dimensions 2x2, where each element is the mean of the 10 elements of the 3rd dimension of a
+
+rowMeans(a, dims = 2)
+## Returns the same thing.
+```

@@ -1,0 +1,88 @@
+---
+title: "Loop Functions - lapply"
+author: "Gareth R. White"
+date: "21 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loop Functions - lapply
+https://www.coursera.org/learn/r-programming/lecture/t5iuo/loop-functions-lapply
+
+## Looping on the Command Line
+
+lapply - loop over list, and apply a function to every element.
+sapply - simplifies the result
+apply - over the margins of an array
+tapply - over subsets of a vector
+mapply - multivariate variation of lapply
+
+spliy is useful in conjunction with lapply to split objects into sub pieces.
+
+
+## lapply
+
+1. x is a list (coerced if necessary)
+2. FUN is a function
+3. other arguments ...
+
+## lapply
+Always returns a list, but not necessarily the same type of list.
+
+```{r}
+x <- list(a = 1:5, b = rnorm(10)) # element a has 5 items, element b has 10.
+lapply(x, mean) # returned list has 2 elements, the mean for a and the mean for b
+```
+
+## lapply
+```{r}
+x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+lapply(x, mean)
+```
+
+## lapply
+```{r}
+x <- 1:4
+lapply(x, runif)
+# runif generates random deviates, where it's first parameter n is the number of observations required.
+# runif is invoked 4 times, once per element in the sequence 1, 2, 3, 4.
+#i.e., this produces 4 deviates, with 1, 2, 3, and 4 observations respectively.
+```
+
+## lappy
+```{r}
+x <- 1:4
+lapply(x, runif, min = 0, max = 10)
+```
+
+## lapply
+The *apply functions often use _anonymous_ functions.
+
+```{r}
+x <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2))
+x
+```
+
+An anonymous function to extract the first column from each matrix:
+
+```{r}
+lapply(x, function(elt) elt[,1])
+```
+
+## sapply
+
+- If the result is a list where every element is length 1, then a vector is returned
+- If the result is a list where every element is a vector of the same length (>1), a matrix is returned.
+- Otherwise a list is returned.
+
+### sapply
+
+```{r}
+x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+lapply(x, mean) # Returns list of length 4, where each element is a vector of length 1, where each item is numeric
+sapply(x, mean) # Returns vector of length 4, where each element is a numeric
+mean(x) ## error, can't apply to lists - need to use *apply
+```
