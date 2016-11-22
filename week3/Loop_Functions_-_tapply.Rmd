@@ -1,0 +1,48 @@
+---
+title: "Loop Functions - tapply"
+author: "Gareth R. White"
+date: "22 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loop Functions - tapply
+https://www.coursera.org/learn/r-programming/lecture/w98BR/loop-functions-tapply
+
+## tapply
+Apply a function over a _subset of a vector_.
+e.g., calculate a mean for different groups in the vector.
+
+- _x_ is a vector.
+- _INDEX_ is a factor, or a list of factors (coerced to factors if necessary). Same length as x
+- _FUN_ is the function to apply.
+- _..._ other arguments passed to FUN.
+- _simplify_ indicates if the result should be simplified, like sapply.
+
+## tapply
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1)) # Vector of 30 elements.
+f <- gl(3, 10) # Generate a factor variable with 3 levels, with 10 replications (i.e., f is a vector of 30 elements, first 10 are 1, second 10 are 2, 3rd 10 are 3)
+f
+tapply(x, f, mean) # Computes mean for 3 sets (with indices given by f) of 10 elements (from x)
+# Results in an array of 3 numerics, labeled with the factor names.
+```
+
+## tapply
+Take group means without simplification.
+
+```{r}
+tapply(x, f, mean, simplify = FALSE)
+# Returns a list
+```
+
+## tapply
+Find group ranges.
+
+```{r}
+tapply(x, f, range)
+# Returns a list of 3 elements (named by f), where each is a vector of 2 numerics, indicating the min and max of the group.
+```

@@ -1,0 +1,87 @@
+---
+title: "Loop Functions - split"
+author: "Gareth R. White"
+date: "22 November 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loop Functions - split
+https://www.coursera.org/learn/r-programming/lecture/2VYGZ/loop-functions-split
+
+## Split
+Takes a vector of other objects, and splits it into groups indicated by a factor or list of factors.
+Like tapply, but without FUN.
+After splitting you could use lapply or sapply to each separate group.
+
+- _x_ is a vector (or list) or data frame.
+- _f_ is a factor (or coerced to one) or a list of factors.
+- _drop_ indicates whether empty factors should be dropped.
+
+## Split
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10)
+split(x, f)
+# Returns a list of 3 vectors, each with 10 numeric elements.
+```
+
+## Split
+Common to use split, followed by lapply.
+```{r}
+lapply(split(x, f), mean)
+# Equivalent to tapply
+```
+
+## Splitting a Data Frame
+```{r}
+library(datasets)
+head(airquality)
+```
+
+## Splitting a Data Frame
+Calculate separate means, for each month.
+Split the data frame into monthly pieces.
+
+```{r}
+s <- split(airquality, airquality$Month) # Month is coerced into a factor variable
+lapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")])) # Get 3 means for each month.
+# Returns a list, with the number of elements indicated by the number of months.
+# Each element is a vector of 3 numeric means, where each element has 3 names() corresponding to the month it represents.
+```
+
+## Splitting a Data Frame
+```{r}
+sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]))
+# Returns 2d matrix, of 3 reading type rows x 5 month columns.
+sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Windd")], na.rm = TRUE)) # Remove NAs before calculating column mean
+```
+
+## Splitting on More than One Level
+```{r}
+x <- rnorm(10)
+f1 <- gl(2, 5) # e.g., gender
+f2 <- gl(5, 2) # e.g., race
+f1
+f2
+interaction(f1, f2)
+# Computes a factor, that represents the interaction of the given factors.
+# 2 gender x 5 race = 10 new factors.
+```
+
+## Splitting on More than One Level
+Interactions can create empty levels.
+```{r}
+str(split(x, list(f1, f2))) # Automatically calls the interaction function to create the new factor variable representing the 10 interaction factor levels of f1 and f2.
+# Returns list of 10 (interaction factor levels), where each element is a numeric vector
+```
+
+## split
+Empty levels can be dropped.
+```{r}
+str(split(x, list(f1, f2), drop = TRUE))
+# Returns a list of 6 elements, which are vectors of numerics.
+```

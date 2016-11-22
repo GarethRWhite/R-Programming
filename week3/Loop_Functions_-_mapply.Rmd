@@ -38,4 +38,41 @@ mapply(rep, 1:4, 4:1)
 ## Returns the same
 ```
 
-_rep_ replicates.
+_rep_ replicates the first argument, a number of times specified by the second argument.
+
+## Vectorizing a Function
+
+```{r}
+noise <- funciton(n, mean, sd)
+{
+	rnorm(n, mean, sd)
+}
+
+noise(5, 1, 2)
+
+noise(1:5, 1:5, 2)
+# Doesn't really vectorize as you might hope:
+# n is 1:5, which in this case is interpreted by rnorm as length(1:5), therefore n=5
+# Each observation takes a different mean, from 1:5
+```
+
+## Instant Vectorization
+Useful for vectorizing a function that doesn't allow for vectors of arguments.
+
+```{r}
+mapply(noise, 1:5, 1:5, 2)
+## Invokes noise 5 times.
+## n=1, mean=1, sd=1
+## n=2, mean=2, sd=1
+## n=3, mean=3, sd=1
+## n=4, mean=4, sd=1
+## n=5, mean=5, sd=1
+```
+
+## Instant Vectorization
+This is the same as,
+```{r}
+list(noise(1, 1, 2), noise(2, 2, 2), noise(3, 3, 2), noise(4, 4, 2), noise(5, 5, 2))
+```
+
+}
